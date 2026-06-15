@@ -16,8 +16,7 @@ hardcoded.
 
 The button is a small **GitHub** pill placed inline right after the
 `<repo> #<number>` PR-number line in the page header. It opens the GitHub PR in
-a new tab. If Graphite changes its markup and that anchor can't be found, the
-button falls back to a floating button in the bottom-right corner.
+a new tab.
 
 ## Install (unpacked)
 
