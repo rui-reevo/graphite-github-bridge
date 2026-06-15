@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Graphite → GitHub PR",
+  "version": "1.0.0",
+  "description": "Adds an 'Open on GitHub' button to Graphite PR pages that jumps to the real GitHub pull request.",
+  "content_scripts": [
+    {
+      "matches": ["https://app.graphite.com/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}

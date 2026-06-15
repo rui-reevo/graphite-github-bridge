@@ -1,0 +1,62 @@
+/* Inline chip next to "frontend-monorepo #13331" in the PR header.
+   Ghost style that matches Graphite's muted header text; the GitHub mark and
+   the trailing arrow signal that it's a link to an external page. */
+.g2gh-inline {
+  align-self: center; /* header row is a baseline flex; center the chip */
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 10px;
+  padding: 1px 8px;
+  height: 22px;
+  box-sizing: border-box;
+  color: #57606a;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.13);
+  border-radius: 6px;
+  font: 500 12px/1
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.g2gh-inline:hover {
+  background: rgba(0, 0, 0, 0.045);
+  color: #1f2328;
+  border-color: rgba(0, 0, 0, 0.22);
+}
+
+/* Floating fallback (used only if the header anchor isn't found). */
+.g2gh-floating {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2147483647;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  color: #ffffff;
+  background: #1f2328;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  font: 600 13px/1
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.g2gh-floating:hover {
+  background: #000000;
+  transform: translateY(-1px);
+}
+
+.g2gh-mark,
+.g2gh-arrow {
+  flex-shrink: 0;
+}
+
+/* Slightly de-emphasize the arrow so the GitHub mark reads first. */
+.g2gh-arrow {
+  opacity: 0.7;
+}
