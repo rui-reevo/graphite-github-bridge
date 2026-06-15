@@ -29,22 +29,21 @@ function findAnchor() {
   return document.querySelector('[class*="MetadataSection_prNumberGroup"]');
 }
 
-function buildButton(githubUrl, inline) {
+function buildButton(githubUrl) {
   const button = document.createElement("a");
   button.id = BUTTON_ID;
   button.target = "_blank";
   button.rel = "noopener noreferrer";
   button.title = "Open this PR on GitHub";
   button.href = githubUrl;
-  button.className = inline ? "g2gh-inline" : "g2gh-floating";
-  const label = inline ? "GitHub" : "Open on GitHub";
-  button.innerHTML = GITHUB_MARK + "<span>" + label + "</span>" + EXTERNAL_ARROW;
+  button.className = "g2gh-inline";
+  button.innerHTML = GITHUB_MARK + "<span>GitHub</span>" + EXTERNAL_ARROW;
   return button;
 }
 
 function syncButton() {
   const githubUrl = graphiteToGithub(location.href);
-  let button = document.getElementById(BUTTON_ID);
+  const button = document.getElementById(BUTTON_ID);
 
   // Not on a PR page — remove the button if it exists.
   if (!githubUrl) {
@@ -52,20 +51,13 @@ function syncButton() {
     return;
   }
 
+  // Wait for the header anchor to render. The MutationObserver re-runs this
+  // once it appears, so there's nothing to do until then.
   const anchor = findAnchor();
-  // Re-create if missing, or if it's in the wrong place (e.g. anchor appeared
-  // after we'd fallen back to the floating button).
-  const wantInline = !!anchor;
-  const haveInline = button && button.classList.contains("g2gh-inline");
-  if (button && wantInline !== haveInline) {
-    button.remove();
-    button = null;
-  }
+  if (!anchor) return;
 
   if (!button) {
-    button = buildButton(githubUrl, wantInline);
-    if (wantInline) anchor.appendChild(button);
-    else document.body.appendChild(button);
+    anchor.appendChild(buildButton(githubUrl));
   } else if (button.href !== githubUrl) {
     button.href = githubUrl;
   }
