@@ -1,13 +1,19 @@
 {
   "manifest_version": 3,
-  "name": "Graphite → GitHub PR",
-  "version": "1.0.0",
-  "description": "Adds an 'Open on GitHub' button to Graphite PR pages that jumps to the real GitHub pull request.",
+  "name": "Graphite ↔ GitHub PR",
+  "version": "2.0.0",
+  "description": "Bidirectional bridge: adds an 'Open on GitHub' button to Graphite PR pages and an 'Open on Graphite' button to GitHub PR pages.",
   "content_scripts": [
     {
       "matches": ["https://app.graphite.com/*"],
       "js": ["content.js"],
       "css": ["content.css"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://github.com/*/*/pull/*"],
+      "js": ["github-content.js"],
+      "css": ["github-content.css"],
       "run_at": "document_idle"
     }
   ]
