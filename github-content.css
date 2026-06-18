@@ -1,0 +1,36 @@
+/* Inline chip appended to the #PR-number span in the GitHub PR title.
+   Matches GitHub's muted header style; the diamond mark and trailing arrow
+   signal that it's a link to an external Graphite page. */
+.gh2g-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 4px;
+  padding: 1px 8px;
+  height: 22px;
+  box-sizing: border-box;
+  color: #57606a;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.13);
+  border-radius: 6px;
+  font: 500 12px/1
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  vertical-align: middle;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.gh2g-inline:hover {
+  background: rgba(0, 0, 0, 0.045);
+  color: #1f2328;
+  border-color: rgba(0, 0, 0, 0.22);
+}
+
+.gh2g-mark,
+.gh2g-arrow {
+  flex-shrink: 0;
+}
+
+.gh2g-arrow {
+  opacity: 0.7;
+}
