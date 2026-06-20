@@ -34,3 +34,32 @@
 .gh2g-arrow {
   opacity: 0.7;
 }
+
+/* Dark theme. GitHub sets data-color-mode on <html>: "dark" forces dark,
+   "auto" follows the OS preference. Light values above are too low-contrast
+   on a dark header (muted text vanishes, black border is invisible). */
+[data-color-mode="dark"] .gh2g-inline,
+[data-color-mode="auto"] .gh2g-inline {
+  color: #c9d1d9;
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+[data-color-mode="dark"] .gh2g-inline:hover,
+[data-color-mode="auto"] .gh2g-inline:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #f0f3f6;
+  border-color: rgba(255, 255, 255, 0.33);
+}
+
+/* "auto" mode follows the OS — revert to light values when the OS is light. */
+@media (prefers-color-scheme: light) {
+  [data-color-mode="auto"] .gh2g-inline {
+    color: #57606a;
+    border-color: rgba(0, 0, 0, 0.13);
+  }
+  [data-color-mode="auto"] .gh2g-inline:hover {
+    background: rgba(0, 0, 0, 0.045);
+    color: #1f2328;
+    border-color: rgba(0, 0, 0, 0.22);
+  }
+}
